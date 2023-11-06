@@ -6,14 +6,14 @@ la $s1, c # load address -> $s1 = &c
 li $t0, 120 # a = 120
 li $t1, 150 # b = 150
 li $t2, 50 # c = 50
-sub $t3, $t1, $t2
-sw $t3, 40($s1) # store word -> c[10] = 100
+sub $t3, $t1, $t2 # subtrair b - c
+sw $t3, 40($s1) # store word -> a[10] = 100
 
 li $t4, 245     # Carregue o índice 245 em $t3
-add $t5, $t0, $t2
+add $t5, $t0, $t2 # adcionar a + c
 sll $t4, $t4, 2 # Multiplique o índice por 4 para calcular o deslocamento em bytes
 add $t4, $s1, $t4 # Adicione o endereço base de 'c' ao deslocamento
-sw $t5, 0($t4)  # Armazene o valor '150' em c[245]
+sw $t5, 0($t4)  # Armazene o valor '170' em c[245]
 
-sub $t6, $t1, $t0
-sw $t6, 0($s1) # store word -> c[10] = 100
+sub $t6, $t1, $t0 # subtrair b - a
+sw $t6, 0($s1) # store word -> c[0] = 30
