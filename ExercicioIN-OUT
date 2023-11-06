@@ -1,14 +1,12 @@
 .data
-prompt: .asciiz "Digite o valor de N: "
-result: .asciiz "A diferença entre o quadrado da soma e a soma dos quadrados é: "
+frase: .asciiz "Digite o valor de N: "
+resultado: .asciiz "A diferença entre o quadrado da soma e a soma dos quadrados é: "
 
 .text
-.globl main
 
-main:
     # Imprima a mensagem de prompt
     li $v0, 4
-    la $a0, prompt
+    la $a0, frase
     syscall
 
     # Receba o valor de N
@@ -26,7 +24,7 @@ main:
     # Loop para calcular a soma dos números e a soma dos quadrados
     li $t3, 1  # Inicializa o contador em 1
     loop:
-        beq $t3, $t0, calculate_difference  # Saia do loop quando o contador for igual a N
+        beq $t3, $t0, calcula_diferenca  # Saia do loop quando o contador for igual a N
 
         # Adicione o valor atual do contador à soma dos números
         add $t1, $t1, $t3
@@ -41,7 +39,7 @@ main:
         addi $t3, $t3, 1
         j loop
 
-    calculate_difference:
+    calcula_diferenca:
         # Calcule o quadrado da soma
         mul $t1, $t1, $t1
 
@@ -50,7 +48,7 @@ main:
 
         # Imprima o resultado
         li $v0, 4
-        la $a0, result
+        la $a0, resultado
         syscall
 
         li $v0, 1
