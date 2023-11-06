@@ -1,0 +1,20 @@
+# letra a:
+lw $t0, 10($s0)  # Carrega o valor de a[10] em $t0
+lw $t1, c       # Carrega o valor de c em $t1
+sub $t2, $t2, $t1  # Subtrai $t1 (c) de $t2 (b)
+sw $t2, 40($s0)  # Armazena o valor de $t2 em a[10]
+
+
+# letra b:
+lw $t0, a        # Carrega o valor de a em $t0
+lw $t1, 245($s1) # Carrega o valor de b[245] em $t1
+lw $t2, c        # Carrega o valor de c em $t2
+add $t3, $t0, $t2 # Soma $t0 (a) e $t2 (c) em $t3
+sw $t3, 245($s1)  # Armazena o valor de $t3 em b[245]
+
+
+# letra c:
+lw $t0, b       # Carrega o valor de b em $t0
+lw $t1, a       # Carrega o valor de a em $t1
+sub $t2, $t0, $t1  # Subtrai $t1 (a) de $t0 (b)
+sw $t2, c       # Armazena o valor de $t2 em c[0]
