@@ -1,0 +1,27 @@
+.data
+a: .word 4, 5     # Declara o array 'a' com dois elementos
+j: .word 0        # Declara a variável 'j' inicializada com 0
+.text
+
+# Carrega o valor de a[0] em $t0
+lw $t0, a
+
+# Compara a[0] com 5
+li $t1, 5
+bge $t0, $t1, ELSE # Se a[0] >= 5, vá para a seção ELSE
+
+# Caso a[0] < 5
+li $t2, 2
+add $t0, $t2, $t0 # a[0] = j + 2
+
+j EXIT # Vá para a seção EXIT
+
+ELSE:
+# Caso a[0] >= 5
+# Carrega o valor de a[1]
+lw $t3, a+4
+
+li $t4, 10
+add $t4, $t3, $t4 # j = a[1] + 10
+
+EXIT:
